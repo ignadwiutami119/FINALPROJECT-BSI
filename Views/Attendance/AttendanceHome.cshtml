@@ -302,13 +302,13 @@ input[type="file"] {
                         @{ var pg = ViewBag.page;
                         if(pg.StatusPage == "Today"){
                     <ul> 
-                        <li style="width:555px"><a style="background:#FF5693; color:#F0F9FF" href="/Home/test?status=Today">Today Presence</a></li>
-                        <li style="width:555px"><a style="color:#F0F9FF" href="/Home/test?status=Employee">Employee Presence</a></li>
+                        <li style="width:555px"><a style="background:#FF5693; color:#F0F9FF" href="/Attendance/AttendanceHome?status=Today">Today Presence</a></li>
+                        <li style="width:555px"><a style="color:#F0F9FF" href="/Attendance/AttendanceHome?status=Employee">Employee Presence</a></li>
                     </ul>}
                     else{
                     <ul> 
-                        <li style="width:555px"><a style="color:#F0F9FF" href="/Home/test?status=Today">Today Presence</a></li>
-                        <li style="width:555px"><a style="background:#FF5693; color:#F0F9FF" href="/Home/test?status=Employee">Employee Presence</a></li>
+                        <li style="width:555px"><a style="color:#F0F9FF" href="/Attendance/AttendanceHome?status=Today">Today Presence</a></li>
+                        <li style="width:555px"><a style="background:#FF5693; color:#F0F9FF" href="/Attendance/AttendanceHome?status=Employee">Employee Presence</a></li>
                     </ul>
                     }
                     }
@@ -401,12 +401,12 @@ input[type="file"] {
     <li class="page-item">
       <a class="page-link" href="">Previous</a>
     </li>
-    <li class="page-item"><a class="page-link" value="1" id="btn1" href="/Home/test?_crntpage=1&status=@paging.StatusPage">1</a></li>
-    <li class="page-item"><a class="page-link" value="2" id="btn2" href="/Home/test?_crntpage=2&status=@paging.StatusPage">2</a></li>
-    <li class="page-item"><a class="page-link" value="3" id="btn3" href="/Home/test?_crntpage=3&status=@paging.StatusPage">3</a></li>
-    <li class="page-item"><a class="page-link" value="4" id="btn4" href="/Home/test?_crntpage=4&status=@paging.StatusPage">4</a></li>
-    <li class="page-item"><a class="page-link" value="5" id="btn5" href="/Home/test?_crntpage=5&status=@paging.StatusPage">5</a></li>
-    <li class="page-item"><a class="page-link" value="6" id="btn6" href="/Home/test?_crntpage=6&status=@paging.StatusPage">6</a></li>
+    <li class="page-item"><a class="page-link" value="1" id="btn1" href="/Attendance/AttendanceHome?_crntpage=1&status=@paging.StatusPage">1</a></li>
+    <li class="page-item"><a class="page-link" value="2" id="btn2" href="/Attendance/AttendanceHome?_crntpage=2&status=@paging.StatusPage">2</a></li>
+    <li class="page-item"><a class="page-link" value="3" id="btn3" href="/Attendance/AttendanceHome?_crntpage=3&status=@paging.StatusPage">3</a></li>
+    <li class="page-item"><a class="page-link" value="4" id="btn4" href="/Attendance/AttendanceHome?_crntpage=4&status=@paging.StatusPage">4</a></li>
+    <li class="page-item"><a class="page-link" value="5" id="btn5" href="/Attendance/AttendanceHome?_crntpage=5&status=@paging.StatusPage">5</a></li>
+    <li class="page-item"><a class="page-link" value="6" id="btn6" href="/Attendance/AttendanceHome?_crntpage=6&status=@paging.StatusPage">6</a></li>
     <li class="page-item">
       <a class="page-link" href="">Next</a>
     </li> }
