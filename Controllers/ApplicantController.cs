@@ -31,6 +31,16 @@ namespace HC_WEB_FINALPROJECT.Controllers
             {
                 status = "Unproccess";
             }
+            if(!_AppDbContext.ApplicantPagings.Any()){
+                var obj = new ApplicantPaging{
+                    StatusPage = "Unproccess",
+                    CurentPage = 1,
+                    Search = null,
+                    ShowItem = 6
+                };
+                _AppDbContext.ApplicantPagings.Add(obj);
+                _AppDbContext.SaveChanges();
+            }
             var pagesetting = _AppDbContext.ApplicantPagings.Find(1);
             pagesetting.Search = "";
             pagesetting.StatusPage = status;

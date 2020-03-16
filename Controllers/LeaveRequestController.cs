@@ -23,6 +23,16 @@ namespace HC_WEB_FINALPROJECT.Controllers {
 
         [Authorize]
         public IActionResult LeaveRequestList (string status = "pending", int _crntpage = 1) {
+               if(!_AppDbContext.LeavePagings.Any()){
+                var obj = new LeavePaging{
+                    StatusPage = "Unproccess",
+                    CurentPage = 1,
+                    Search = null,
+                    ShowItem = 6
+                };
+                _AppDbContext.LeavePagings.Add(obj);
+                _AppDbContext.SaveChanges();
+            }
             var pagesetting = _AppDbContext.LeavePagings.Find (1);
             pagesetting.Search = "";
             pagesetting.StatusPage = status;

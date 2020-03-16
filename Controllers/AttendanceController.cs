@@ -264,6 +264,16 @@ namespace HC_WEB_FINALPROJECT.Controllers
         [Authorize]
         public IActionResult AttendanceHome(string status = "Today", int _crntpage = 1)
         {
+            if(!_AppDbContext.AttendancesPagings.Any()){
+                var obj = new AttendancePaging{
+                    StatusPage = "Today",
+                    CurentPage = 1,
+                    Search = null,
+                    ShowItem = 6
+                };
+                _AppDbContext.AttendancesPagings.Add(obj);
+                _AppDbContext.SaveChanges();
+            }
             var get_employee = from a in _AppDbContext.Employee select a;
             ViewBag.items = get_employee;
             var set_page = _AppDbContext.AttendancesPagings.Find(1);

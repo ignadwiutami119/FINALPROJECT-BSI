@@ -27,6 +27,16 @@ namespace HC_WEB_FINALPROJECT.Controllers {
             if (status_employee == null) {
                 status_employee = "permanent";
             }
+               if(!_AppDbContext.Pagings.Any()){
+                var obj = new Paging{
+                    StatusPage = "Permanent",
+                    CurentPage = 1,
+                    Search = null,
+                    ShowItem = 6
+                };
+                _AppDbContext.Pagings.Add(obj);
+                _AppDbContext.SaveChanges();
+            }
             var set_page = _AppDbContext.Pagings.Find (1);
             set_page.Search = "";
             set_page.StatusPage = status_employee;
