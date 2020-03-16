@@ -22,11 +22,13 @@ public class BirthdayService : IHostedService
             using (var scope = _scopeFactory.CreateScope())
             {
                 var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-                var x = from i in context.Employee select i;
-                foreach (var i in x)
+                var Emp = (from i in context.Employee where i.BirthDate.Day == DateTime.Now.Day && i.BirthDate.Month == DateTime.Now.Month select i).FirstOrDefault();
+                Console.WriteLine(Emp.Name);
+                Console.WriteLine("HBD");
+                 if(Emp !=null)
                 {
-                    if (i.BirthDate.Date == DateTime.Now.Date)
-                    {
+                    if(Emp.BirthDate.Day==DateTime.Now.Day && Emp.BirthDate.Month==DateTime.Now.Month )
+                    {Console.WriteLine("ini masuk");
                         Task.Run(TaskRoutine, cancellationToken);
                     }
                     else
@@ -52,7 +54,7 @@ public class BirthdayService : IHostedService
                 using (var scope = _scopeFactory.CreateScope())
                 {
                 var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-                var x = from i in context.Employee where (i.BirthDate.Date == DateTime.Now.Date) select i;
+                var x = from i in context.Employee where (i.BirthDate.Month == DateTime.Now.Month && i.BirthDate.Day == DateTime.Now.Day) select i;
                 foreach (var i in x)
                 {
                 var message = new MimeMessage();

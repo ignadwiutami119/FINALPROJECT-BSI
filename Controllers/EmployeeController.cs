@@ -220,7 +220,9 @@ namespace HC_WEB_FINALPROJECT.Controllers {
 
         [Authorize]
         [HttpPost]
-        public IActionResult Importy ([FromForm (Name = "file")] IFormFile file) {
+        public IActionResult Imports ([FromForm (Name = "file")] IFormFile file) 
+        {
+            Console.WriteLine(file.FileName);
             Console.WriteLine ("masuk method sini");
             string filePath = string.Empty;
             if (file != null) {
@@ -272,7 +274,7 @@ namespace HC_WEB_FINALPROJECT.Controllers {
             select a;
             var countReq = leavereq.Count ();
             ViewBag.Req = countReq;
-            return RedirectToAction ("EmployeeList", "Employee");
+            return RedirectToAction ("Dashboard", "Home");
         }
 
         [Authorize]

@@ -128,7 +128,7 @@ namespace HC_WEB_FINALPROJECT.Controllers
         {
             var rmv = _AppDbContext.Applicant.Find(Id);
             var stat = rmv.Status_Proccess;
-            _AppDbContext.Applicant.Remove(rmv);
+            rmv.Status_Proccess = "Rejected";
             _AppDbContext.SaveChanges();
             var leavereq = from a in _AppDbContext.LeaveRequests
                            where a.status == "pending"
@@ -197,6 +197,8 @@ namespace HC_WEB_FINALPROJECT.Controllers
             }
             else if (image != null && cv != null)
             {
+                Console.WriteLine(cv.FileName);
+                Console.WriteLine("nama cv");
                 var path = "wwwroot//image";
                 var pathCV = "wwwroot//cv";
                 Directory.CreateDirectory(pathCV);
@@ -204,7 +206,6 @@ namespace HC_WEB_FINALPROJECT.Controllers
                 var CVname = Path.Combine(pathCV, Path.GetFileName(cv.FileName));
                 cv.CopyTo(new FileStream(CVname, FileMode.Create));
                 cvfile = CVname.Substring(8).Replace(@"\", "/");
-
                 var Filename = Path.Combine(path, Path.GetFileName(image.FileName));
                 image.CopyTo(new FileStream(Filename, FileMode.Create));
                 file = Filename.Substring(8).Replace(@"\", "/");
@@ -213,7 +214,6 @@ namespace HC_WEB_FINALPROJECT.Controllers
             {
                 var getApplicant = _AppDbContext.Applicant.Find(Id);
                 cvfile = getApplicant.CV;
-
                 var path = "wwwroot//image";
                 Directory.CreateDirectory(path);
                 var Filename = Path.Combine(path, Path.GetFileName(image.FileName));
@@ -224,7 +224,6 @@ namespace HC_WEB_FINALPROJECT.Controllers
             {
                 var getApplicant = _AppDbContext.Applicant.Find(Id);
                 file = getApplicant.Image;
-
                 var path = "wwwroot//cv";
                 Directory.CreateDirectory(path);
                 var Filename = Path.Combine(path, Path.GetFileName(cv.FileName));
@@ -233,6 +232,8 @@ namespace HC_WEB_FINALPROJECT.Controllers
             }
 
             var get = _AppDbContext.Applicant.Find(Id);
+            Console.WriteLine(cvfile);
+            Console.WriteLine(Id);
             get.CV = cvfile;
             get.Image = file;
             get.Name = name;

@@ -71,7 +71,7 @@ public class EventService : IHostedService
                         var message = new MimeMessage();
                         message.To.Add(new MailboxAddress(x.Name, x.Email));
                         message.From.Add(new MailboxAddress("HR","HumanResource@HR.co.id"));
-                        message.Subject = "Selamat Hari "+nameReminder[i];
+                        message.Subject = "Happy "+nameReminder[i];
                         message.Body = new TextPart("plain")
                         {
                             Text = "Dalam memperingati Hari "+nameReminder[i]+" maka perusahaan meliburkan semua employee pada tanggal : "+dateReminder[0]
